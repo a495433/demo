@@ -16,8 +16,9 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="100"
-        app:progress_textoffset="20dp"
+        android:progress="50"
+        app:progress_unreach_color="#0f0"
+        app:progress_textoffset="10dp"
         />
     <Button
         android:id="@+id/hello"

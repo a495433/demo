@@ -39,7 +39,7 @@ public class HorizontalProgressBar extends ProgressBar {
     }
 
     public HorizontalProgressBar(Context context, AttributeSet attrs) {
-        super(context, attrs,0);
+        this(context, attrs,0);
     }
 
     public HorizontalProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -96,24 +96,24 @@ public class HorizontalProgressBar extends ProgressBar {
         float radio = getProgress() * 1.0f / getMax();
         float useWidth = mRealWidth - mTextOffset * 2 - textWidth;
         float progressX = radio * useWidth;
-        if (getProgress() == 1) {
+        if (getProgress() == getMax()) {
             progressX = useWidth + mTextOffset;
             noNeedUnRech = true;
         }
-            mPaint.setColor(mReachColor);
-            mPaint.setStrokeWidth(mReachHeight);
-            canvas.drawLine(0,0,progressX,0,mPaint);
-            int y = (int) ((-(mPaint.descent() + mPaint.ascent())) / 2);
-            mPaint.setColor(mTextColor);
-            canvas.drawText(text,progressX + mTextOffset,y,mPaint);
-            if (noNeedUnRech) {
-                canvas.restore();
-                return;
-            }
-            float start = progressX + mTextOffset * 2 + textWidth;
-            mPaint.setColor(mUnReachColor);
-            mPaint.setStrokeWidth(mUnReachHeight);
-            canvas.drawLine(start,0,mRealWidth,0,mPaint);
+        mPaint.setColor(mReachColor);
+        mPaint.setStrokeWidth(mReachHeight);
+        canvas.drawLine(0,0,progressX,0,mPaint);
+        int y = (int) ((-(mPaint.descent() + mPaint.ascent())) / 2);
+        mPaint.setColor(mTextColor);
+        canvas.drawText(text,progressX + mTextOffset,y,mPaint);
+        if (noNeedUnRech) {
+            canvas.restore();
+            return;
+        }
+        float start = progressX + mTextOffset * 2 + textWidth;
+        mPaint.setColor(mUnReachColor);
+        mPaint.setStrokeWidth(mUnReachHeight);
+        canvas.drawLine(start,0,mRealWidth,0,mPaint);
         canvas.restore();
     }
 
