@@ -79,7 +79,7 @@ public class HorizontalProgressBar extends ProgressBar {
             int textHeight = (int) (mPaint.descent() - mPaint.ascent());
             result = getPaddingTop() + getPaddingBottom() + Math.max(Math.max(mReachHeight,mUnReachHeight),Math.abs(textHeight));
             if (mode == MeasureSpec.AT_MOST) {
-                result = Math.max(textHeight,size);
+                result = Math.min(textHeight,size);
             }
         }
         return result;
